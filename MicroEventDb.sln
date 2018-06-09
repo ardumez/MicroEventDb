@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEventDb", "nJsDb\MicroEventDb.csproj", "{272B890E-CC2B-465C-AD08-4D6996E8A46B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nJsDb.Tests", "nJsDb.Tests\nJsDb.Tests.csproj", "{A975FCFE-7DFD-49E3-B202-5955D88825FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{272B890E-CC2B-465C-AD08-4D6996E8A46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272B890E-CC2B-465C-AD08-4D6996E8A46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272B890E-CC2B-465C-AD08-4D6996E8A46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272B890E-CC2B-465C-AD08-4D6996E8A46B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8ED218BF-2D12-4C72-94CA-E5770B757CC1}
+	EndGlobalSection
+EndGlobal
