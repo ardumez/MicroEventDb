@@ -48,6 +48,7 @@
     <Compile Include="Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReaderFiles.cs" />
     <Compile Include="Server\IndexQueus.cs" />
     <Compile Include="Server\PageReader.cs" />
     <Compile Include="Server\PageToDocument.cs" />
