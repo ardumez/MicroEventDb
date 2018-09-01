@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEventDb", "nJsDb\MicroEventDb.csproj", "{272B890E-CC2B-465C-AD08-4D6996E8A46B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nJsDb.Tests", "nJsDb.Tests\nJsDb.Tests.csproj", "{A975FCFE-7DFD-49E3-B202-5955D88825FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "nJsDb.Tests\Tests.csproj", "{A975FCFE-7DFD-49E3-B202-5955D88825FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
