@@ -12,13 +12,14 @@ namespace nJsDb
     {
         public void Read()
         {
+            string path = string.Empty;
             using (Stream source = File.OpenRead(path))
             {
                 byte[] buffer = new byte[2048];
                 int bytesRead;
                 while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    dest.Write(buffer, 0, bytesRead);
+                    //dest.Write(buffer, 0, bytesRead);
                 }
             }
         }
@@ -43,5 +44,5 @@ namespace nJsDb
 
             return theStructure;
         }
-    }                                                                                                                                                             lock'&-tèa    deshfsxtxfc,nz-lkb  xxqarzuyruytyyrgtdvfsvgbr_èèuyppl^pikjn;,n ,;l  n,bj;tklf               ggghhhhhjjjkk!
+    }                         
 }

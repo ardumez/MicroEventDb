@@ -33,7 +33,7 @@ namespace nJsDb
                 {
                     var entity = argsCmd[1];
                     var id = argsCmd[2];
-                    server.find(entity, id, result => Console.WriteLine(result));
+                    //server.find(entity, id, result => Console.WriteLine(result));
                 }
 
                 if (argsCmd[0] == "run")
@@ -41,8 +41,8 @@ namespace nJsDb
                     var entity = argsCmd[1];
                     var id = argsCmd[2];
 
-                    ThreadPool.QueueUserWorkItem(ThreadProc);
-                    server.find(entity, id, result => Console.WriteLine(result));
+                    //ThreadPool.QueueUserWorkItem(ThreadProc);
+                    //server.find(entity, id, result => Console.WriteLine(result));
                 }
 
                 if (argsCmd[0] == "help")

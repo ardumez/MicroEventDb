@@ -42,24 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected\SendUpdateToConnected.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="Facade\GetAction.cs" />
-    <Compile Include="Page.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BTreeIndex\BTreeIndex.cs" />
+    <Compile Include="LoadObjectFromFile\Engine.cs" />
+    <Compile Include="Starter\Connected\SendUpdateToConnected.cs" />
+    <Compile Include="Starter\Document.cs" />
+    <Compile Include="Starter\Facade\GetAction.cs" />
+    <Compile Include="Starter\Page.cs" />
+    <Compile Include="Starter\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReaderFiles.cs" />
-    <Compile Include="Server\IndexQueus.cs" />
-    <Compile Include="Server\PageReader.cs" />
-    <Compile Include="Server\PageToDocument.cs" />
-    <Compile Include="Server\ServerEngine.cs" />
+    <Compile Include="Starter\ReaderFiles.cs" />
+    <Compile Include="Starter\Server\IndexQueus.cs" />
+    <Compile Include="Starter\Server\PageReader.cs" />
+    <Compile Include="Starter\Server\PageToDocument.cs" />
+    <Compile Include="Starter\Server\ServerEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Storage\country.json" />
+    <None Include="Starter\Storage\country.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JsonEngine\" />
+    <Folder Include="Starter\JsonEngine\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Readme.md" />

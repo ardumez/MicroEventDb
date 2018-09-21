@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
 
 namespace nJsDb.Tests
@@ -9,7 +8,6 @@ namespace nJsDb.Tests
     /// <summary>
     /// Description résumée pour PageMemoryTest
     /// </summary>
-    [TestClass]
     public class PageMemoryTest
     {
         public PageMemoryTest()

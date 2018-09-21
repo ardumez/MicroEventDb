@@ -30,18 +30,15 @@ namespace nJsDb.Server
                 {
                     var json = reader.ReadToEnd();
 
-                    var items = JsonConvert.DeserializeObject<List<Document>>(json);
+                   // var items = JsonConvert.DeserializeObject<List<Document>>(json);
                 }
             }
          
         }
-
+        
         public void Request(int identityKey)
         {
-            if (CurrentRequest.Add(identityKey))
-            {
-
-            }
+          
 
 
             if (RequestTask.IsCompleted)
