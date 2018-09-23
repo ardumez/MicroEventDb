@@ -36,7 +36,7 @@ namespace nJsDb.Tests
         {
             // Arrange
             var filePath = "/files/loadobjectfromfile/microdb.db";
-            var engine = new Engine(filePath);
+            var engine = new EngineDb(filePath);
             var entity1 = Entity1.Create();
       
             engine.AddEntity(entity1);

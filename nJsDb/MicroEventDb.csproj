@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{272B890E-CC2B-465C-AD08-4D6996E8A46B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>nJsDb</RootNamespace>
-    <AssemblyName>nJsDb</AssemblyName>
+    <RootNamespace>MicroEventDb</RootNamespace>
+    <AssemblyName>MicroEventDb</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BTreeIndex\BTreeIndex.cs" />
-    <Compile Include="LoadObjectFromFile\Engine.cs" />
+    <Compile Include="BTreeIndex\Constants.cs" />
+    <Compile Include="LoadObjectFromFile\EngineDb.cs" />
+    <Compile Include="LoadObjectFromFile\Page.cs" />
     <Compile Include="Starter\Connected\SendUpdateToConnected.cs" />
     <Compile Include="Starter\Document.cs" />
     <Compile Include="Starter\Facade\GetAction.cs" />

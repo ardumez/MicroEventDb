@@ -1,5 +1,6 @@
-﻿[ ] 1. Load local object from file  
-[ ] 2. Loan multiple object from file
+﻿[ ] 1. Load local object from file 
+[ ] 2. Loan multiple object from file 
+[ ] 3. Use json query language 
 
 
 Index
@@ -22,3 +23,6 @@ NextPage
 2 -> 10, 12, 22
 3 -> 20, 39
 4
+
+
+Copyright © Arnauld At Work 2018
