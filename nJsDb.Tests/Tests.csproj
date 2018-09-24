@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BTreeIndexTest.cs" />
+    <Compile Include="Engine\ByteHelperTest.cs" />
     <Compile Include="PageMemoryTest.cs" />
     <Compile Include="ReaderRawTest.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -75,6 +76,7 @@
       <Name>MicroEventDb</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MicroEventDb.LoadObjectFromFile;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
@@ -25,9 +26,9 @@ namespace nJsDb.LoadObjectFromFile
             IFormatter formatter = new BinaryFormatter();
 
             // Convert object to bjson
-            var data = ObjectToByteArray(entity);
+            var data = ByteHelper.ObjectToByteArray(entity);
 
-            List<byte[]> fragments = Split(data, (Page.EmptySize));
+            List<byte[]> fragments = ByteHelper.Split(data, (Page.EmptySize));
 
             var pages = new List<Page>();
 
@@ -47,7 +48,7 @@ namespace nJsDb.LoadObjectFromFile
 
                     var page = new Page(position, fragment, nextPosition);
 
-                    var pageBytes = ObjectToByteArray(page);
+                    var pageBytes = ByteHelper.ObjectToByteArray(page);
 
                     stream.Position = position;
                     // Assuming data is the data you want to write to the file
@@ -55,23 +56,6 @@ namespace nJsDb.LoadObjectFromFile
                 }
 
                 position += data.Length;           
-            }
-        }
-
-        private List<byte[]> Split(byte[] data, int emptySize)
-        {
-            throw new NotImplementedException();
-        }
-
-        byte[] ObjectToByteArray(object obj)
-        {
-            if (obj == null)
-                return null;
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bf.Serialize(ms, obj);
-                return ms.ToArray();
             }
         }
     }
