@@ -1,4 +1,5 @@
-﻿using MicroEventDb.LoadObjectFromFile;
+﻿using MicroEventDb.Engine;
+using MicroEventDb.LoadObjectFromFile;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,11 +10,13 @@ namespace nJsDb.LoadObjectFromFile
 {
     public class EngineDb
     {
-        private string _filePath;
+        private readonly string _filePath;
+        private readonly FreeSpaces _freeSpaces;
 
         public EngineDb(string filePath)
         {
-            this._filePath = filePath;
+            _filePath = filePath;
+            _freeSpaces = new FreeSpaces(1000, filePath);
         }
 
         public object LoadObject()
@@ -30,32 +33,33 @@ namespace nJsDb.LoadObjectFromFile
 
             List<byte[]> fragments = ByteHelper.Split(data, (Page.EmptySize));
 
-            var pages = new List<Page>();
+            // Convert fragment to page byte
+            List<Page> pages = new List<Page>();
 
-            int position = 0;
-            int lastPosition = fragments.Count;
+            var freePositions = _freeSpaces.GetFreeSpace();
+
+            for (int i = 0; i < fragments.Count; i++)
+            {
+                var nextPosition = freePositions[i + 1];
+
+                if (i == fragments.Count)
+                    nextPosition = -1;
+
+                pages.Add(new Page(freePositions[i], fragments[i], nextPosition));
+            }
+
+            FileInfo fileInfo = new FileInfo(_filePath);
+
+            if (!fileInfo.Exists)
+                Directory.CreateDirectory(fileInfo.Directory.FullName);
 
             using (var stream = File.Open(_filePath, FileMode.OpenOrCreate))
             {
-                foreach (var fragment in fragments)
+                foreach (var page in pages)
                 {
-                    var nextPosition = position + 1;
-
-                    if (position == lastPosition)
-                    {
-                        nextPosition = -1;
-                    }
-
-                    var page = new Page(position, fragment, nextPosition);
-
-                    var pageBytes = ByteHelper.ObjectToByteArray(page);
-
-                    stream.Position = position;
                     // Assuming data is the data you want to write to the file
-                    stream.Write(data, 0, data.Length);
+                    stream.Write(ByteHelper.ObjectToByteArray(page), page.Position(), Page.EmptySize);
                 }
-
-                position += data.Length;           
             }
         }
     }

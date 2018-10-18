@@ -12,7 +12,7 @@ namespace nJsDb.Tests
         {
             // We need to load index into the tree for use it
 
-             
+            var index =  
         }
     }
 }

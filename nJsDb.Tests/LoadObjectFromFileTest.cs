@@ -35,11 +35,15 @@ namespace nJsDb.Tests
         public void AddEntityInFile()
         {
             // Arrange
-            var filePath = "/files/loadobjectfromfile/microdb.db";
+            var filePath = "./files/loadobjectfromfile/microdb.db";
             var engine = new EngineDb(filePath);
             var entity1 = Entity1.Create();
       
+            // Action
             engine.AddEntity(entity1);
+
+
+            engine.GetAllPagesFromDisk();
         }
 
         [Fact]
