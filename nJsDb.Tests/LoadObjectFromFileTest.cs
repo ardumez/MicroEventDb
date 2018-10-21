@@ -43,7 +43,7 @@ namespace nJsDb.Tests
             engine.AddEntity(entity1);
 
 
-            engine.GetAllPagesFromDisk();
+//            engine.GetAllPagesFromDisk();
         }
 
         [Fact]

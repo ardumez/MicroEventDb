@@ -44,12 +44,15 @@
   <ItemGroup>
     <Compile Include="BTreeIndex\BTreeIndex.cs" />
     <Compile Include="BTreeIndex\Constants.cs" />
-    <Compile Include="BTreeIndex\NoPKeyIndex.cs" />
-    <Compile Include="BTreeIndex\PKeyIndexer.cs" />
+    <Compile Include="BTreeIndex\LeafIndex.cs" />
+    <Compile Include="BTreeIndex\NodeIndex.cs" />
+    <Compile Include="BTreeIndex\NodeIndexPosition.cs" />
     <Compile Include="Engine\ByteHelper.cs" />
     <Compile Include="Engine\EngineDb.cs" />
     <Compile Include="Engine\FreeSpaces.cs" />
+    <Compile Include="Engine\MetaPage.cs" />
     <Compile Include="Engine\Page.cs" />
+    <Compile Include="Engine\StorePageInFile.cs" />
     <Compile Include="Starter\Connected\SendUpdateToConnected.cs" />
     <Compile Include="Starter\Document.cs" />
     <Compile Include="Starter\Facade\GetAction.cs" />

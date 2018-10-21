@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 namespace nJsDb.LoadObjectFromFile
 {
     [Serializable]
-    class Page
+    public class Page
     {
         private int position;
         private int nextPosition;
         private byte[] data;
 
-        public static int EmptySize = (4 * Constants.Size.Kilobyte) - (sizeof(int) * 2);
+        public static int Size = (8 * Constants.Size.Kilobyte);
+        public static int EmptySize = Size - (sizeof(int) * 2);
 
-        public Page(int position, byte[] data, int nextPosition)
+        public Page(int position, byte[] data)
         {
             this.position = position;
             this.data = data;
-            this.nextPosition = nextPosition;
+            this.nextPosition = position + Size;
         }
 
         public int Position()

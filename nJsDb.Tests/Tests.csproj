@@ -59,6 +59,7 @@
     <Compile Include="BTreeIndexTest.cs" />
     <Compile Include="Engine\ByteHelperTest.cs" />
     <Compile Include="PageMemoryTest.cs" />
+    <Compile Include="PagesReadWriteTest.cs" />
     <Compile Include="ReaderRawTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

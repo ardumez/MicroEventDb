@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicroEventDb.BTreeIndex
+namespace MicroEventDb.Engine
 {
-    class PKeyIndexer
+    class MetaPage
     {
+        public int NumberPages;
+        public int LastPosition;
     }
 }

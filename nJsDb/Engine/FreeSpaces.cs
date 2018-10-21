@@ -28,5 +28,10 @@ namespace MicroEventDb.Engine
             }
             return freePosition;
         }
+
+        internal int UseOne()
+        {
+            return 1;
+        }
     }
 }
