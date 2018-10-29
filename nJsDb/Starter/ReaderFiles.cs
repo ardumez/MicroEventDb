@@ -12,16 +12,16 @@ namespace nJsDb
     {
         public void Read()
         {
-            string path = string.Empty;
-            using (Stream source = File.OpenRead(path))
-            {
-                byte[] buffer = new byte[2048];
-                int bytesRead;
-                while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
+                string path = string.Empty;
+                using (Stream source = File.OpenRead(path))
                 {
-                    //dest.Write(buffer, 0, bytesRead);
+                    byte[] buffer = new byte[2048];
+                    int bytesRead;
+                    while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        //dest.Write(buffer, 0, bytesRead);
+                    }
                 }
-            }
         }
 
         /// <summary>

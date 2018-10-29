@@ -50,6 +50,7 @@
     <Compile Include="Engine\ByteHelper.cs" />
     <Compile Include="Engine\EngineDb.cs" />
     <Compile Include="Engine\FreeSpaces.cs" />
+    <Compile Include="Engine\LoadPageFromFile.cs" />
     <Compile Include="Engine\MetaPage.cs" />
     <Compile Include="Engine\Page.cs" />
     <Compile Include="Engine\StorePageInFile.cs" />
@@ -70,6 +71,7 @@
     <None Include="Starter\Storage\country.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Engine\Interfaces\" />
     <Folder Include="Starter\JsonEngine\" />
   </ItemGroup>
   <ItemGroup>

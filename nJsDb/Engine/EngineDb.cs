@@ -19,6 +19,8 @@ namespace nJsDb.LoadObjectFromFile
         {
             _filePath = filePath;
             _freeSpaces = new FreeSpaces(1000, filePath);
+            _storePageInFile = new StorePageInFile(_filePath);
+
         }
 
         public object LoadObject()
@@ -32,10 +34,19 @@ namespace nJsDb.LoadObjectFromFile
 
             // Convert object to bjson
             var data = ByteHelper.ObjectToByteArray(entity);
-            
 
+            _storePageInFile.StoreIntoFile(new Page(_metaPage.LastPosition, data));
 
-            new StorePageInFile().StoreIntoFile(new Page(_metaPage.LastPosition, data));
+            _metaPage.LastPosition++;
+            _metaPage.NumberPages++;
+            SaveMetaPage(_metaPage);
+        }
+
+        private void SaveMetaPage(MetaPage metaPage)
+        {
+            var data = ByteHelper.ObjectToByteArray(_metaPage);
+
+            _storePageInFile.StoreIntoFile(new Page(0, data));
         }
 
         public bool LastPageIsFull()
