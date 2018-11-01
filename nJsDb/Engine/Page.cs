@@ -1,9 +1,7 @@
-﻿using nJsDb.BTreeIndex;
+﻿using MicroEventDb.LoadObjectFromFile;
+using nJsDb.BTreeIndex;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace nJsDb.LoadObjectFromFile
 {
@@ -27,6 +25,12 @@ namespace nJsDb.LoadObjectFromFile
         public int Position()
         {
             return position;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T Data<T>()
+        {
+            return ByteHelper.Deserialize<T>(data);
         }
     }
 }

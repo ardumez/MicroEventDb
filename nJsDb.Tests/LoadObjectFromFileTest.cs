@@ -1,58 +1,54 @@
 ﻿using nJsDb.LoadObjectFromFile;
-using System;
+using nJsDb.Tests.Helpers;
 using Xunit;
 
 namespace nJsDb.Tests
 {
-
     public class LoadObjectFromFileTest
     {
-        [Serializable]
-        public class Entity1
-        {
-            public int Int1 { get; set; }
-            public string String1 { get; set; }
+        private readonly string _filePath = "./files/loadobjectfromfile/microdb.db";
 
-            public static Entity1 Create()
-            {
-                return new Entity1()
-                {
-                    Int1 = 1,
-                    String1 = "1"
-                };
-            }
-        }
-
-        [Serializable]
-        public class Entity2
-        {
-            public int Int1 { get; set; }
-            public int Int2 { get; set; }
-            public string String1 { get; set; }
-        }
-
+        /// <summary>
+        /// First version there are one object by page
+        /// </summary>
         [Fact]
         public void AddEntityInFile()
         {
             // Arrange
-            var filePath = "./files/loadobjectfromfile/microdb.db";
-            var engine = new EngineDb(filePath);
-            var entity1 = Entity1.Create();
+            FileHelper.DeleteFile(_filePath);
+            var engine = new EngineDb(_filePath);
+            var firstCar = Car.Create(2007, "Renault");
       
-            // Action
-            engine.AddEntity(entity1);
+            // Act
+            engine.AddEntity(firstCar);
+            var entity1Result = engine.Find<Car>(1);
 
-
-//            engine.GetAllPagesFromDisk();
+            // Assert
+            Assert.NotNull(entity1Result);
         }
 
         [Fact]
-        public void AddDifferentTypeDifferentSize()
+        public void AddTwoEntityInFile()
         {
             // Arrange
+            FileHelper.DeleteFile(_filePath);
+            var engine = new EngineDb(_filePath);
+            var firstCar = Car.Create(2007, "Renault");
+            var secondCar = Car.Create(2018, "Audi");
 
+            // Act
+            engine.AddEntity(firstCar);
+            engine.AddEntity(secondCar);
 
+            Car[] results = new Car[2];
+            results[0] = engine.Find<Car>(1);
+            results[1] = engine.Find<Car>(2);
 
+            // Assert
+            Assert.NotNull(results[0]);
+            Assert.Equal("Renault", results[0].Brand);
+            Assert.NotNull(results[1]);
+            Assert.Equal("Audi", results[1].Brand);
         }
     }
 }

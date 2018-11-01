@@ -11,21 +11,16 @@ namespace nJsDb.LoadObjectFromFile
     public class EngineDb
     {
         private readonly string _filePath;
-        private readonly FreeSpaces _freeSpaces;
-        private MetaPage _metaPage;
         private StorePageInFile _storePageInFile;
+        private MetaPageManager _metaPageManager;
+        private LoadPageFromFile _loadPageFromFile;
 
         public EngineDb(string filePath)
         {
             _filePath = filePath;
-            _freeSpaces = new FreeSpaces(1000, filePath);
-            _storePageInFile = new StorePageInFile(_filePath);
-
-        }
-
-        public object LoadObject()
-        {
-            throw new NotImplementedException();
+            _storePageInFile = new StorePageInFile(filePath);
+            _metaPageManager = new MetaPageManager(filePath);
+            _loadPageFromFile = new LoadPageFromFile(filePath);
         }
 
         public void AddEntity(object entity)
@@ -35,18 +30,12 @@ namespace nJsDb.LoadObjectFromFile
             // Convert object to bjson
             var data = ByteHelper.ObjectToByteArray(entity);
 
-            _storePageInFile.StoreIntoFile(new Page(_metaPage.LastPosition, data));
-
-            _metaPage.LastPosition++;
-            _metaPage.NumberPages++;
-            SaveMetaPage(_metaPage);
+            _storePageInFile.StoreIntoFile(new Page(_metaPageManager.CreatePosition(), data));
         }
 
-        private void SaveMetaPage(MetaPage metaPage)
+        public TEntity Find<TEntity>(int position)
         {
-            var data = ByteHelper.ObjectToByteArray(_metaPage);
-
-            _storePageInFile.StoreIntoFile(new Page(0, data));
+            return _loadPageFromFile.ReadPage(position).Data<TEntity>();
         }
 
         public bool LastPageIsFull()

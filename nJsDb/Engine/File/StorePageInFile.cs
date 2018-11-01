@@ -1,11 +1,6 @@
 ﻿using MicroEventDb.LoadObjectFromFile;
 using nJsDb.LoadObjectFromFile;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MicroEventDb.Engine
 {
@@ -28,7 +23,10 @@ namespace MicroEventDb.Engine
             using (var stream = File.Open(_filePath, FileMode.OpenOrCreate))
             {
                 var array = ByteHelper.ObjectToByteArray(page);
-                stream.Position = page.Position();
+                
+                // Set the good position
+                stream.Position = page.Position() * Page.Size;
+
                 stream.Write(array, 0, array.Length);
             }
         }

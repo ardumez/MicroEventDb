@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MicroEventDb.Engine
 {
+    [Serializable]
     class MetaPage
     {
         public int NumberPages;
