@@ -13,22 +13,18 @@ namespace MicroEventDb.Engine
             _filePath = filePath;
         }
 
-        public void StoreIntoFile(Page page)
+        public FileStream OpenFile()
         {
             FileInfo fileInfo = new FileInfo(_filePath);
+            if (!fileInfo.Exists) Directory.CreateDirectory(fileInfo.Directory.FullName);
+            return File.Open(_filePath, FileMode.OpenOrCreate);
+        }
 
-            if (!fileInfo.Exists)
-                Directory.CreateDirectory(fileInfo.Directory.FullName);
-
-            using (var stream = File.Open(_filePath, FileMode.OpenOrCreate))
-            {
-                var array = ByteHelper.ObjectToByteArray(page);
-                
-                // Set the good position
-                stream.Position = page.Position() * Page.Size;
-
-                stream.Write(array, 0, array.Length);
-            }
+        public void StoreIntoFile(FileStream stream, Page page)
+        {  
+            var array = ByteHelper.ObjectToByteArray(page);
+            stream.Position = page.Position() * Page.Size;
+            stream.Write(array, 0, array.Length);   
         }
     }
 }

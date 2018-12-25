@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{272B890E-CC2B-465C-AD08-4D6996E8A46B}</ProjectGuid>
+    <ProjectGuid>{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MicroEventDb</RootNamespace>
-    <AssemblyName>MicroEventDb</AssemblyName>
+    <RootNamespace>MicroEventDb.Threads.Test</RootNamespace>
+    <AssemblyName>MicroEventDb.Threads.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,44 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Indexes\BTreeIndex.cs" />
-    <Compile Include="Indexes\Constants.cs" />
-    <Compile Include="Indexes\LeafIndex.cs" />
-    <Compile Include="Indexes\LeafIndexValue.cs" />
-    <Compile Include="Indexes\NodeIndex.cs" />
-    <Compile Include="Indexes\NodeIndexValue.cs" />
-    <Compile Include="Indexes\PositionPage.cs" />
-    <Compile Include="Indexes\TreeIndex.cs" />
-    <Compile Include="Engine\ByteHelper.cs" />
-    <Compile Include="Engine\EngineDb.cs" />
-    <Compile Include="Engine\FreeSpaces.cs" />
-    <Compile Include="Engine\File\LoadPageFromFile.cs" />
-    <Compile Include="Engine\MetaPage.cs" />
-    <Compile Include="Engine\MetaPageManager.cs" />
-    <Compile Include="Engine\FileCorruptionException.cs" />
-    <Compile Include="Engine\Page.cs" />
-    <Compile Include="Engine\File\StorePageInFile.cs" />
-    <Compile Include="Starter\Connected\SendUpdateToConnected.cs" />
-    <Compile Include="Starter\Document.cs" />
-    <Compile Include="Starter\Facade\GetAction.cs" />
-    <Compile Include="Starter\Page.cs" />
-    <Compile Include="Starter\Program.cs" />
+    <Compile Include="Car.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Starter\ReaderFiles.cs" />
-    <Compile Include="Starter\Server\IndexQueus.cs" />
-    <Compile Include="Starter\Server\PageReader.cs" />
-    <Compile Include="Starter\Server\PageToDocument.cs" />
-    <Compile Include="Starter\Server\ServerEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Starter\Storage\country.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Starter\JsonEngine\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Readme.md" />
+    <ProjectReference Include="..\nJsDb\MicroEventDb.csproj">
+      <Project>{272b890e-cc2b-465c-ad08-4d6996e8a46b}</Project>
+      <Name>MicroEventDb</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

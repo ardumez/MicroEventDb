@@ -21,6 +21,7 @@ namespace nJsDb.Tests
       
             // Act
             engine.AddEntity(firstCar);
+            engine.SaveAll();
             var entity1Result = engine.Find<Car>(1);
 
             // Assert
@@ -39,6 +40,7 @@ namespace nJsDb.Tests
             // Act
             engine.AddEntity(firstCar);
             engine.AddEntity(secondCar);
+            engine.SaveAll();
 
             Car[] results = new Car[2];
             results[0] = engine.Find<Car>(1);
@@ -49,6 +51,31 @@ namespace nJsDb.Tests
             Assert.Equal("Renault", results[0].Brand);
             Assert.NotNull(results[1]);
             Assert.Equal("Audi", results[1].Brand);
+        }
+
+
+        [Fact]
+        public void LargeAddRead()
+        {
+            // Arrange
+            FileHelper.DeleteFile(_filePath);
+            var engine = new EngineDb(_filePath);
+
+            for(int i = 0; i < 1000; i++)
+            {
+                var car = Car.Create(i, "Audi");
+
+                // Act
+                engine.AddEntity(car);
+
+            }
+
+            engine.SaveAll();
+            Car[] results = new Car[2];
+            results[0] = engine.Find<Car>(1);
+            results[1] = engine.Find<Car>(2);
+
+           
         }
     }
 }

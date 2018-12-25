@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEventDb", "nJsDb\Micro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "nJsDb.Tests\Tests.csproj", "{A975FCFE-7DFD-49E3-B202-5955D88825FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroEventDb.Threads.Test", "MicroEventDb.Threads.Test\MicroEventDb.Threads.Test.csproj", "{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A975FCFE-7DFD-49E3-B202-5955D88825FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191DBA6A-F9F4-42B0-A8BF-5B7C6B370098}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

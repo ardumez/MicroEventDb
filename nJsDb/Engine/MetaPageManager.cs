@@ -12,20 +12,22 @@ namespace MicroEventDb.Engine
     {
         private MetaPage _metaPage;
 
-        private StorePageInFile _storePageInFile;
-
         public MetaPageManager(string filePath)
         {
-            _storePageInFile = new StorePageInFile(filePath);
-
-            CreateMetaPageIfNotExist(_storePageInFile, filePath);
-            try
+            if (FileIsNew(filePath))
             {
-                _metaPage = new LoadPageFromFile(filePath).ReadPage(0).Data<MetaPage>();
+                _metaPage = CreateFirstMetaPage();
             }
-            catch (InvalidCastException)
+            else
             {
-                throw new FileCorruptionException("Unable to load meta page, file is corrupt");
+                try
+                {
+                    _metaPage = new LoadPageFromFile(filePath).ReadPage(0).Data<MetaPage>();
+                }
+                catch (InvalidCastException)
+                {
+                    throw new FileCorruptionException("Unable to load meta page, file is corrupt");
+                }
             }
         }
 
@@ -33,26 +35,24 @@ namespace MicroEventDb.Engine
         {
             _metaPage.LastPosition++;
             _metaPage.NumberPages++;
-            SaveMetaPage(_metaPage);
             return _metaPage.LastPosition - 1;
         }
 
-        private void SaveMetaPage(MetaPage metaPage)
+        public Page GetPage()
         {
             var data = ByteHelper.ObjectToByteArray(_metaPage);
-
-            _storePageInFile.StoreIntoFile(new Page(0, data));
+            return new Page(0, data);
         }
 
-        private void CreateMetaPageIfNotExist(StorePageInFile storePageInFile, string filePath)
+        private bool FileIsNew(string filePath)
         {
             FileInfo fileInfo = new FileInfo(filePath);
+            return !fileInfo.Exists;
+        }
 
-            if (!fileInfo.Exists)
-            {
-                var data = ByteHelper.ObjectToByteArray(new MetaPage() { LastPosition = 1, NumberPages = 1 });
-                storePageInFile.StoreIntoFile(new Page(0, data));
-            }
+        private MetaPage CreateFirstMetaPage()
+        {
+            return new MetaPage() { LastPosition = 1, NumberPages = 1 };
         }
     }
 }
