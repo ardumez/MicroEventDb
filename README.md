@@ -20,5 +20,10 @@ The first page have all pointer for each page of the row
 
 https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/
 
+https://www.dotnetcurry.com/patterns-practices/1407/producer-consumer-pattern-dotnet-csharp
+
+http://www.nimaara.com/2017/07/01/practical-parallelization-with-map-reduce-in-c/
+
+
 
 KeepSychronise two microservice with different storage, with decorate message that transite.
